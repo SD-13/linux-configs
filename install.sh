@@ -18,6 +18,7 @@ cp -rv picom ${HOME}/.config
 cp -rv rofi ${HOME}/.config
 
 cp -rv i3 ${HOME}/.config
+cp -rv polybar ${HOME}/.config
 
 # cp -v zshrc ${HOME}/.zshrc
 # cp -v vimrc ${HOME}/.vimrc

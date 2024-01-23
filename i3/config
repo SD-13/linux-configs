@@ -220,7 +220,7 @@ mode "resize" {
 #   }
 # }
 
-exec polybar
+exec polybar example -r -c ~/.config/polybar/config.ini
 
 exec i3-msg border none
 
@@ -235,8 +235,8 @@ client.background       #FFFFFF
 
 
 # trackpad
-exec --no-startup-id xinput set-prop "MSFT0001:00 04F3:3140 Touchpad" "libinput Tapping Enabled" 1
-exec --no-startup-id xinput set-prop "MSFT0001:00 04F3:3140 Touchpad" "libinput Natural Scrolling Enabled" 1
+exec --no-startup-id xinput set-prop "SYNA3255:00 06CB:7F28 Touchpad" "libinput Tapping Enabled" 1
+exec --no-startup-id xinput set-prop "SYNA3255:00 06CB:7F28 Touchpad" "libinput Natural Scrolling Enabled" 1
 
 
 # background
@@ -289,5 +289,5 @@ bindsym $mod+g move scratchpad
 
 
 # battery status
-exec while [ true ]; do currBat=$(cat /sys/class/power_supply/BAT0/capacity) && stats=$(cat /sys/class/power_supply/BAT0/status) && if [ $currBat -lt 20 -a $stats = 'Discharging' ]; then notify-send "BATTERY LOW" "......\n.CURR BAT: ${currBat}🔌"; fi ; sleep 1m; done
+exec while [ true ]; do currBat=$(cat /sys/class/power_supply/BAT1/capacity) && stats=$(cat /sys/class/power_supply/BAT1/status) && if [ $currBat -lt 20 -a $stats = 'Discharging' ]; then notify-send "BATTERY LOW" "......\n.CURR BAT: ${currBat}🔌"; fi ; sleep 1m; done
 
