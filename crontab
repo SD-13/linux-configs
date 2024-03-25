@@ -1,2 +1,0 @@
-* * * * * /home/dipankar/.config/i3/scripts/battery.sh >> /var/log/auto-battery.log 2>&1
-

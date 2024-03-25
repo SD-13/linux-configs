@@ -372,7 +372,7 @@ for_window [class="Spotify"] focus
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
 # Updater
-# exec --no-startup-id pamac-tray
+exec --no-startup-id pamac-tray
 
 # bluetooth
 # exec --no-startup-id blueberry-tray
@@ -395,23 +395,21 @@ exec --no-startup-id volumeicon
 
 # variety
 # exec --no-startup-id variety
-# exec killall -q variety
 
 # clipman
 # exec --no-startup-id xfce4-clipman
 
 # Conky
-# exec --no-startup-id conky -c ~/.config/i3/system-overview
+exec --no-startup-id conky -c ~/.config/i3/system-overview
 
 # feh sets wallpaper
-# exec --no-startup-id feh --bg-fill /usr/share/backgrounds/archlinux/arch-wallpaper.jpg &
-exec --no-startup-id feh --bg-fill /usr/share/backgrounds/arcolinux/att-03.jpg &
+exec --no-startup-id feh --bg-fill /usr/share/backgrounds/archlinux/arch-wallpaper.jpg &
+exec --no-startup-id feh --bg-fill /usr/share/backgrounds/arcolinux/arco-wallpaper.jpg &
 # for other Arch Linux based distros
 # exec --no-startup-id feh --bg-fill /usr/share/archlinux-tweak-tool/data/wallpaper/wallpaper.png &
 
-exec killall -q polybar
 # Polybar
-exec_always --no-startup-id polybar mainbar-xmonad &
+# exec_always --no-startup-id ~/.config/polybar/launch.sh &
 
 ################# system applications       
 
@@ -596,10 +594,10 @@ for_window [class="Alacritty"] focus
 bindsym mod1+t exec --no-startup-id variety -t
 # next wallpaper
 bindsym mod1+n exec --no-startup-id variety -n
-# bindsym mod1+Right exec --no-startup-id variety -n
+bindsym mod1+Right exec --no-startup-id variety -n
 # previous wallpaper
 bindsym mod1+p exec --no-startup-id variety -p
-# bindsym mod1+Left exec --no-startup-id variety -p
+bindsym mod1+Left exec --no-startup-id variety -p
 # favorite wallpaper
 bindsym mod1+f exec --no-startup-id variety -f
 # pause wallpaper
@@ -635,8 +633,8 @@ bindsym XF86AudioStop exec --no-startup-id playerctl stop
 
 ################# xbacklight                       
 
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5 # increase screen brightness
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 20 # increase screen brightness
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 20 # decrease screen brightness
 
 ################# bar toggle                       
 
@@ -728,92 +726,91 @@ exec_always --no-startup-id picom --config ~/.config/i3/picom.conf
 bindsym control+mod1+o exec --no-startup-id ~/.config/i3/scripts/picom-toggle.sh
 
 ################# bar appearance                   
-# i3 bar appearance
-# commented out to use the xmonad polybar
-# bar {
-#     height 25
-#     workspace_buttons yes
-# 	font pango:Noto Sans 12
-# 	# position top
-#     position bottom
 
-# 	# system icons
-#     # tray_output none
-#     # tray_output $firstMonitor
-#     # tray_output $secondMonitor
+bar {
+    height 25
+    workspace_buttons yes
+	font pango:Noto Sans 12
+	# position top
+    position bottom
 
-#     # OPTION 1 : i3status
+	# system icons
+    # tray_output none
+    # tray_output $firstMonitor
+    # tray_output $secondMonitor
 
-#     # type status_command i3status without the config file and
-#     # you will get the standard i3status bar
-#     # Second one is the standard statusbar with my personal settings
+    # OPTION 1 : i3status
 
-# 	# status_command i3status
-#     status_command i3status -c ~/.config/i3/i3status.conf
+    # type status_command i3status without the config file and
+    # you will get the standard i3status bar
+    # Second one is the standard statusbar with my personal settings
 
-#     # OPTION 2 : i3blocks
+	# status_command i3status
+    status_command i3status -c ~/.config/i3/i3status.conf
 
-#     # https://github.com/vivien/i3blocks
-#     # another way to provide text in the statusbar
-#     # put hastag in front if not installed
+    # OPTION 2 : i3blocks
 
-#     # status_command i3blocks
-#     # status_command i3blocks -c ~/.config/i3/i3blocks.conf
-#     # status_command i3blocks -c ~/.config/i3/i3blocks-rainbow.conf
-#     # status_command i3blocks -c ~/.config/i3/i3blocks-original.conf
-#     # status_command i3blocks -c ~/.config/i3/i3blocks-awesome.conf
+    # https://github.com/vivien/i3blocks
+    # another way to provide text in the statusbar
+    # put hastag in front if not installed
+
+    # status_command i3blocks
+    # status_command i3blocks -c ~/.config/i3/i3blocks.conf
+    # status_command i3blocks -c ~/.config/i3/i3blocks-rainbow.conf
+    # status_command i3blocks -c ~/.config/i3/i3blocks-original.conf
+    # status_command i3blocks -c ~/.config/i3/i3blocks-awesome.conf
 
 
-#     # OPTION 3 : conky
+    # OPTION 3 : conky
 
-#     # You can also replace the istatus bar with a conky
-#     # start-conky-i3statusbar.sh is started and conky will follow
-#     # documentation : https://i3wm.org/docs/user-contributed/conky-i3bar.html
-#     # conky configuration is in conky-i3statusbar
+    # You can also replace the istatus bar with a conky
+    # start-conky-i3statusbar.sh is started and conky will follow
+    # documentation : https://i3wm.org/docs/user-contributed/conky-i3bar.html
+    # conky configuration is in conky-i3statusbar
 
-# 	# status_command ~/.config/i3/start-conky-i3statusbar.sh
+	# status_command ~/.config/i3/start-conky-i3statusbar.sh
 
-#     # OPTION 4 : polybar
+    # OPTION 4 : polybar
 
-#     # polybar is launched elsewhere - search for the word
-#     # from the opening of the "bar {...}" till the end has to go or hashtagged out
-#     # in order for the system trayicons to show up in polybar
+    # polybar is launched elsewhere - search for the word
+    # from the opening of the "bar {...}" till the end has to go or hashtagged out
+    # in order for the system trayicons to show up in polybar
 
-#     ##START THEMING BAR
-#     #Theme name : ArcoLinux Mind
+    ##START THEMING BAR
+    # Theme name : ArcoLinux Default
 
-#     # i3 bar colors
-#     # variable border background Text
+    # i3 bar colors
+    # variable border background Text
 
-#     colors {
-#         background #202A2E
-#         statusline #F9FAF9
-#         separator  #454947
+    colors {
+        background #2F2F2F
+        statusline #eeeeee
+        separator  #666666
 
-#         # colorclass           border  backgr. text
-#         focused_workspace     #F9FAF9 #16a085 #292F34
-#         active_workspace      #595B5B #353836 #FDF6E3
-#         inactive_workspace    #595B5B #202A2E #EEE8D5
-#         urgent_workspace      #e82951 #e82951 #FDF6E3
-#         }
+        # colorclass           border  backgr. text
+        focused_workspace     #a9a9a9 #5f676a #eeeeee
+        active_workspace      #a9a9a9 #5f676a #eeeeee
+        inactive_workspace    #a9a9a9 #222222 #a9a9a9
+        urgent_workspace      #a9a9a9 #d42121 #FFFFFF
+        }
 
-#     }
-#     ##STOP THEMING BAR
+    }
+    ##STOP THEMING BAR
 
-#     ##START THEMING WM
-#     #Theme name : ArcoLinux Mind
+    ##START THEMING WM
+    # Theme name : ArcoLinux Default
 
-#     # Window color settings
-#     # class                 border  backgr. text    indicator
-#     client.focused          #556064 #556064 #80FFF9 #FDF6E3
-#     client.unfocused        #2F3D44 #2F3D44 #1ABC9C #454948
-#     client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948
-#     client.placeholder      #2F3D44 #2F3D44 #1ABC9C #454948
-#     client.urgent           #CB4B16 #FDF6E3 #1ABC9C #CB4B16
+    # Window color settings
+    # class                 border  backgr. text    indicator
+    client.focused          #6790EB #6790EB #e5e5e5 #6790EB
+    client.unfocused        #222222 #222222 #aaaaaa #222222
+    client.focused_inactive #222222 #222222 #a9a9a9 #222222
+    client.placeholder      #222222 #222222 #aaaaaa #222222
+    client.urgent           #d42121 #d42121 #f7f7f7 #d42121
 
-#     client.background       #242424
+    client.background       #242424
 
-#     ##STOP THEMING WM
+    ##STOP THEMING WM
 
 ######################################## THE END 
 
